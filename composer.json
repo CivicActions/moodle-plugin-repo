@@ -1,0 +1,30 @@
+{
+  "name": "civicactions/moodle-plugin-repo",
+  "description": "Metadata for Moodle plugins that are hosted on moodle.org.",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "micaherne/moodle-plugin-repo",
+        "version": "dev-master",
+        "type": "custom-package",
+        "source": {
+          "url": "https://github.com/micaherne/moodle-plugin-repo",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "micaherne/moodle-plugin-repo": "dev-master"
+  },
+  "scripts": {
+    "moodle-plugin-repo-update": [
+      "php vendor/micaherne/moodle-plugin-repo/gen.php --skip-core",
+      "mv vendor/micaherne/moodle-plugin-repo/packages.json metadata/"
+    ]
+  }
+}
