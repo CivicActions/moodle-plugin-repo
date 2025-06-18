@@ -24,7 +24,7 @@
   "scripts": {
     "moodle-plugin-repo-update": [
       "php vendor/micaherne/moodle-plugin-repo/gen.php --skip-core",
-      "mv vendor/micaherne/moodle-plugin-repo/packages.json metadata/"
+      "mv vendor/micaherne/moodle-plugin-repo/packages.json ./"
     ]
   }
 }
