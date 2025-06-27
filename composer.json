@@ -19,12 +19,26 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "micaherne/moodle-plugin-repo": "dev-master"
+    "micaherne/moodle-plugin-repo": "dev-master",
+    "cweagans/composer-patches": "~1.7.3"
   },
   "scripts": {
     "moodle-plugin-repo-update": [
+      "rm -f vendor/micaherne/moodle-plugin-repo/pluglist.json",
       "php vendor/micaherne/moodle-plugin-repo/gen.php --skip-core",
       "mv vendor/micaherne/moodle-plugin-repo/packages.json ./"
     ]
+  },
+  "config": {
+    "allow-plugins": {
+      "cweagans/composer-patches": true
+    }
+  },
+  "extra": {
+    "patches": {
+      "micaherne/moodle-plugin-repo": {
+        "Add Stream Context": "https://patch-diff.githubusercontent.com/raw/micaherne/moodle-plugin-repo/pull/3.patch"
+      }
+    }
   }
 }

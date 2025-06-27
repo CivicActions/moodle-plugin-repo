@@ -4,7 +4,7 @@ Composer-friendly metadata for Moodle plugins that are hosted on moodle.org.
 ## Description
 This repo generates metadata that allow projects to pull in Moodle plugins using Composer, rather than downloading them directly from the [Moodle Plugins directory](https://moodle.org/plugins/index.php). This allows for much better dependency management, including quick installs and updates, all managed via command line.
 
-Under the hood, this repo uses [`micaherne/moodle-plugin-repo`](https://github.com/micaherne/moodle-plugin-repo) to generate metadata.
+Under the hood, this repo uses [`micaherne/moodle-plugin-repo`](https://github.com/micaherne/moodle-plugin-repo) (with a patch) to generate metadata.
 
 ## How to Use the Metadata
 To begin, we assume that you are *not* using the `composer.json` that is included in the Moodle package. We prefer to manage Moodle as a dependency alongside its plugins, so we need a `composer.json` external to the docroot that contains Moodle.
@@ -39,8 +39,10 @@ Plugins update and the metadata can grow stale. Developers with appropriate cred
    ```
    composer moodle-plugin-repo-update
    ```
-4. Push the new metadata up to the repo.
+4. Commit the new metadata and push it up to the repo.
    ```
+   git add packages.json
+   git commit . -m "Updated metadata [mm/dd/yyyy]"
    git push origin main
    ```
 GitHub Pages will automatically rebuild when `main` is pushed to.
